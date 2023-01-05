@@ -1,0 +1,22 @@
+// Debug launch settings configuration
+
+{
+    "version": "0.2.0",
+    "projectName": "G4xx_series",
+    "configurations": 
+    [
+        {
+            "name": "STlink debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/G4xx_series.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32G431xx",
+            "interface": "swd",
+            "svdFile": "/Users/embedded/Embedded/Docs/SVD_files/STM32G4_svd/STM32G4_svd_V2.0/STM32G431xx.svd",
+            "preLaunchCommands": ["make -j4"],
+        }
+    ]
+    
+}

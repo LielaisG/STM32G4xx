@@ -1,0 +1,5 @@
+{
+        "cortex-debug.gdbPath": "/usr/local/bin/arm-none-eabi-gdb",
+        "cortex-debug.stutilPath": "/usr/local/bin/st-util",
+        "cortex-debug.armToolchainPath": "/usr/local/bin",
+}

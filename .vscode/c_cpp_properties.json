@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "macos",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32G4xx/Include",
+                "${workspaceFolder}/Drivers/G4xx_LL_Driver/Inc"
+            ],
+            "defines": [
+                "USE_FULL_LL_DRIVER",
+                "STM32G431xx"
+            ],
+            "intelliSenseMode": "macos-gcc-arm",
+            "cStandard": "c99",
+            "cppStandard": "gnu++20",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}

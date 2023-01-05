@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build all",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "-j4"
+            ]
+        },
+        {
+            "label": "Build clean",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "clean"
+            ]
+        },
+        {
+            "label": "ST-Flash",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "-j4",
+                "st-flash"
+            ]
+        }
+    ]
+}
