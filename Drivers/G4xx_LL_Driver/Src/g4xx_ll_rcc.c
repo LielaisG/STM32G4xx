@@ -24,9 +24,6 @@ LL_StatusTypeDef LL_RCC_Init(LL_RCC_HandleTypeDef *RCCx)
 {
     LL_StatusTypeDef tmp_status = LL_OK;
 
-    NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
-    NVIC_SetPriority(SysTick_IRQn, 15);
-
     /*TODO:
     [] Assure correct function order for system initialization
 
@@ -35,9 +32,6 @@ LL_StatusTypeDef LL_RCC_Init(LL_RCC_HandleTypeDef *RCCx)
     /* Reset of all peripherals, Initializes the Flash interface and the Systick */
     if (RCCx->Init.SYSTEM)
     {
-        RCCx->Instance->APB2ENR     |=  SYSCFGEN;
-        RCCx->Instance->APB1ENR1    |=  PWREN;
-        PWR->CR3                    |=  UCPD1_DBDIS;
         do {
             FLASH->ACR |= LATENCY_4WS;
         } while (!(FLASH->ACR & FLASH_ACR_LATENCY_4WS));

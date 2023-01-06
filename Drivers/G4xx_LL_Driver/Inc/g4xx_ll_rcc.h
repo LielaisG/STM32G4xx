@@ -28,6 +28,7 @@
 extern "C" {
 #endif
 
+#include "main.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
@@ -75,10 +76,8 @@ typedef struct __LL_RCC_HandleTypeDef
  * @defgroup RCC configuration parameters
  * @{
 */
-#define SYSCFGEN                    (RCC_APB2ENR_SYSCFGEN)          /*!< SYSCFG + COMP + VREFBUF + OPAMP clock enable */
-#define PWREN                       (RCC_APB1ENR1_PWREN)            /*!< Power interface clock enable */
-#define NVIC_PRIORITYGROUP_4        ((uint32_t)0x00000003)          /*!< 4 bits for pre-emption priority,0 bit  for subpriority */
-#define UCPD1_DBDIS                 (PWR_CR3_UCPD_DBDIS)            /*!< USB Type-C and Power Delivery Dead Battery disable. */
+/*TODO*/
+//#define NVIC_PRIORITYGROUP_4        ((uint32_t)0x00000003)          /*!< 4 bits for pre-emption priority,0 bit  for subpriority */
 #define LATENCY_4WS                 (4 << FLASH_ACR_LATENCY_Pos)    /*!< SYSCLK period count to access the Flash */
 #define VOS1                        (PWR_CR1_VOS_0)                 /*!< Voltage scaling selection to range 1 */
 #define MODE1                       (PWR_CR5_R1MODE)                /*!< Selection for Main Regulator in Range1 */

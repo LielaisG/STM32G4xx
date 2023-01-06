@@ -16,6 +16,7 @@
 */
 
 #include "main.h"
+#include "gpio.h"
 #include "rcc.h"
 
 /**
@@ -24,14 +25,17 @@
 */
 int main(void)
 {
-    LL_Init();
-    RCC_Init();
+    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	LL_Init();
 
-    /* Infinite loop */
-    while (1)
-    {
+    /* Configure the system clock */
+	RCC_Init();
 
-    }
+	/* Infinite loop */
+	while (1)
+	{
+		
+	}
 }
 
 /**
@@ -40,8 +44,11 @@ int main(void)
 */
 void Error_Handler(void)
 {
-  /* User can add his own implementation to report the LL error return state */
-  __disable_irq();
-  while (1){}
+	/* USER CODE BEGIN Error_Handler_Debug */
+	/* User can add his own implementation to report the HAL error return state */
+	__disable_irq();
+	while (1)
+	{
+	}
+	/* USER CODE END Error_Handler_Debug */
 }
-

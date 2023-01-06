@@ -7,10 +7,11 @@
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Drivers/CMSIS/Include",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32G4xx/Include",
-                "${workspaceFolder}/Drivers/G4xx_LL_Driver/Inc"
+                "${workspaceFolder}/Drivers/G4xx_LL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32G4xx_HAL_Driver/Inc"
             ],
             "defines": [
-                "USE_FULL_LL_DRIVER",
+                "USE_FULL_HAL_DRIVER",
                 "STM32G431xx"
             ],
             "intelliSenseMode": "macos-gcc-arm",

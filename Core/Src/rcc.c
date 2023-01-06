@@ -34,4 +34,5 @@ void RCC_Init(void)
     rcc.Init.PLLN = PLLN_DIV85;
     rcc.Init.PLLR = PLLR_DIV2;
     if (LL_RCC_Init(&rcc) != LL_OK) Error_Handler();
+    
 }

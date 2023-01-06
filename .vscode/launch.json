@@ -2,13 +2,13 @@
 
 {
     "version": "0.2.0",
-    "projectName": "G4xx_series",
+    "projectName": "STM32G4xx",
     "configurations": 
     [
         {
             "name": "STlink debug",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/G4xx_series.elf",
+            "executable": "${workspaceRoot}/build/STM32G4xx.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "stutil",

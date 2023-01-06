@@ -9,7 +9,7 @@
 ######################################
 # target
 ######################################
-TARGET = G4xx_series
+TARGET = STM32G4xx
 
 
 ######################################
@@ -33,9 +33,11 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Core/Src/main.c \
+Core/Src/gpio.c \
 Core/Src/rcc.c \
 Core/Src/stm32g4xx_it.c \
 Core/Src/system_stm32g4xx.c \
+Core/Src/stm32g4xx_hal_msp.c \
 Drivers/G4xx_LL_Driver/Src/g4xx_ll.c \
 Drivers/G4xx_LL_Driver/Src/g4xx_ll_rcc.c
 
@@ -86,7 +88,7 @@ AS_DEFS =
 # C defines
 C_DEFS =  \
 -DSTM32G431xx \
--DUSE_LL_DRIVER
+-DUSE_HAL_DRIVER
 
 # AS includes
 AS_INCLUDES = 
@@ -96,7 +98,8 @@ C_INCLUDES =  \
 -ICore/Inc \
 -IDrivers/G4xx_LL_Driver/Inc \
 -IDrivers/CMSIS/Device/ST/STM32G4xx/Include \
--IDrivers/CMSIS/Include
+-IDrivers/CMSIS/Include \
+-IDrivers/STM32G4xx_HAL_Driver/Inc
 
 
 # compile gcc flags
