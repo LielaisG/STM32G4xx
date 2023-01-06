@@ -24,12 +24,7 @@ LL_StatusTypeDef LL_RCC_Init(LL_RCC_HandleTypeDef *RCCx)
 {
     LL_StatusTypeDef tmp_status = LL_OK;
 
-    /*TODO:
-    [] Assure correct function order for system initialization
-
-    NOTE: Use HAL example to do so*/
-
-    /* Reset of all peripherals, Initializes the Flash interface and the Systick */
+    /* Configure Flash latency */
     if (RCCx->Init.SYSTEM)
     {
         do {
