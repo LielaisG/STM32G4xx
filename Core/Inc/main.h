@@ -37,6 +37,7 @@ typedef enum
 #include "stm32g4xx_hal.h"
 #include "g4xx_ll.h"
 #include "g4xx_ll_rcc.h"
+#include "g4xx_ll_gpio.h"
 
 void Error_Handler(void);
 

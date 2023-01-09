@@ -31,10 +31,14 @@ int main(void)
     /* Configure the system clock */
 	RCC_Init();
 
+    GPIO_Init();
+    
 	/* Infinite loop */
 	while (1)
 	{
-		
+		GPIOA->ODR  ^=  GPIO_ODR_OD5;
+        uint32_t wait = 100;
+  	    while (wait != 0) {wait--;}    
 	}
 }
 

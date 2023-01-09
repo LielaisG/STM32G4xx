@@ -1,9 +1,8 @@
 /**
  ******************************************************************************
- * @file    rcc.h
+ * @file    g4xx_ll_rcc.c
  * @author  Gatis Fridenbergs
- * @brief   This file contains all the function prototypes for
- *          the gpio.c file.
+ * @brief   GPIO LL module driver.
  * 
  ******************************************************************************
  * @attention
@@ -16,19 +15,4 @@
  ******************************************************************************
 */
 
-#ifndef __GPIO_H__
-#define __GPIO_H__
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "main.h"
-
-void GPIO_Init(void);
-
-#ifdef __cplusplus
-}
-#endif
-#endif /*__ GPIO_H__ */
-
+#include "g4xx_ll_gpio.h"

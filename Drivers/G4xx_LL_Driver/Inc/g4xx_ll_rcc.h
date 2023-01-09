@@ -41,11 +41,9 @@ extern "C" {
 */
 typedef struct __LL_RCC_InitTypeDef
 {
-    FunctionalState SYSTEM;         /*!<  */
-
     FunctionalState LOW_POWER_MODE; /*!<  */
 
-    FunctionalState HSI;            /*!<  */
+    uint32_t SYSCLK_SOURCE;         /*!<  */
 
     uint32_t PLLSRC;                /*!<  */
 
@@ -58,6 +56,12 @@ typedef struct __LL_RCC_InitTypeDef
     uint32_t PLLQ;                  /*!<  */
 
     uint32_t PLLP;                  /*!<  */
+
+    uint32_t AHB_PRE;               /*!<  */
+
+    uint32_t APB1_PRE;              /*!<  */
+
+    uint32_t APB2_PRE;              /*!<  */
 
 } LL_RCC_InitTypeDef;
 
@@ -77,19 +81,24 @@ typedef struct __LL_RCC_HandleTypeDef
  * @{
 */
 /*TODO*/
-//#define NVIC_PRIORITYGROUP_4        ((uint32_t)0x00000003)          /*!< 4 bits for pre-emption priority,0 bit  for subpriority */
-#define LATENCY_4WS                 (4 << FLASH_ACR_LATENCY_Pos)    /*!< SYSCLK period count to access the Flash */
-#define VOS1                        (PWR_CR1_VOS_0)                 /*!< Voltage scaling selection to range 1 */
-#define MODE1                       (PWR_CR5_R1MODE)                /*!< Selection for Main Regulator in Range1 */
-#define HSION                       (RCC_CR_HSION)                  /*!< Internal High Speed oscillator (HSI16) clock enable */
-#define HSITRIM_64                  (64 << RCC_ICSCR_HSITRIM_Pos)   /*!< Value for HSI16 clock trimming */
-#define HSI16                       (RCC_PLLCFGR_PLLSRC_1)          /*!< HSI16 clock selected as PLL clock entry */
-#define PLLM_DIV4                   (RCC_PLLCFGR_PLLM_2)            /*!< Division factor for the main PLL input clock */
-#define PLLN_DIV85                  (85 << RCC_PLLCFGR_PLLN_Pos)    /*!< Main PLL multiplication factor for VCO */
-#define PLLR_DIV2                   (0 << RCC_PLLCFGR_PLLR_Pos)     /*!< Main PLL division factor for PLL “R” clock (system clock) */
-#define PLLQ_DIV2                   (0 << RCC_PLLCFGR_PLLQ_Pos)     /*!< Main PLL division factor for PLL “Q” clock */
-#define PLLP_DIV2                   (RCC_PLLCFGR_PLLPDIV_1)         /*!< Main PLLP division factor */
-#define PLLREN                      (RCC_PLLCFGR_PLLREN)            /*!< PLL“R”clockoutputenable */
+//#define NVIC_PRIORITYGROUP_4        ((uint32_t)0x00000003)                /*!< 4 bits for pre-emption priority,0 bit  for subpriority */
+#define LATENCY_4WS                 (0x4UL << FLASH_ACR_LATENCY_Pos)        /*!< SYSCLK period count to access the Flash */
+#define VOS1                        (0x1UL << PWR_CR1_VOS_Pos)              /*!< Voltage scaling selection to range 1 */
+#define MODE1                       (PWR_CR5_R1MODE)                        /*!< Selection for Main Regulator in Range1 */
+#define HSION                       (RCC_CR_HSION)                          /*!< Internal High Speed oscillator (HSI16) clock enable */
+#define HSITRIM_64                  (0x64UL << RCC_ICSCR_HSITRIM_Pos)       /*!< Value for HSI16 clock trimming */
+#define HSI16                       (RCC_PLLCFGR_PLLSRC_1)                  /*!< HSI16 clock selected as PLL clock entry */
+#define PLLCLK                      (RCC_CFGR_SW_PLL)                       /*!< PLL selection as system clock */
+#define PLLM_DIV4                   (0x3UL << RCC_PLLCFGR_PLLM_Pos)         /*!< Division factor for the main PLL input clock */
+#define PLLN_DIV85                  (0x55UL << RCC_PLLCFGR_PLLN_Pos)        /*!< Main PLL multiplication factor for VCO */
+#define PLLR_DIV2                   (0x0UL << RCC_PLLCFGR_PLLR_Pos)         /*!< Main PLL division factor for PLL “R” clock (system clock) */
+#define PLLQ_DIV2                   (0x0UL << RCC_PLLCFGR_PLLQ_Pos)         /*!< Main PLL division factor for PLL “Q” clock */
+#define PLLP_DIV2                   (0x2UL << RCC_PLLCFGR_PLLPDIV_Pos)                 /*!< Main PLLP division factor */
+#define PLLREN                      (RCC_PLLCFGR_PLLREN)                    /*!< PLL“R”clockoutputenable */
+#define HPRE_DIV2                   (0x8UL << RCC_CFGR_HPRE_Pos)            /*!< SYSCLK divided by 2 */
+#define HPRE_DIV1                   (RCC_CFGR_HPRE_DIV1)                    /*!< SYSCLK not divided */
+#define PPRE1_DIV1                  (RCC_CFGR_PPRE1_DIV1)                   /*!< HCLK not divided */
+#define PPRE2_DIV1                  (RCC_CFGR_PPRE2_DIV1)                   /*!< HCLK not divided */
 /**
  * @}
 */

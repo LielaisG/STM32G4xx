@@ -18,19 +18,17 @@
 #include "g4xx_ll_rcc.h"
 
 /**
- * @brief
+ * @brief Initialize the RCC Oscillators according to the specified parameters
 */
 LL_StatusTypeDef LL_RCC_Init(LL_RCC_HandleTypeDef *RCCx)
 {
     LL_StatusTypeDef tmp_status = LL_OK;
 
     /* Configure Flash latency */
-    if (RCCx->Init.SYSTEM)
-    {
-        do {
-            FLASH->ACR |= LATENCY_4WS;
-        } while (!(FLASH->ACR & FLASH_ACR_LATENCY_4WS));
-    }
+    do {
+        FLASH->ACR |= LATENCY_4WS;
+        FLASH->ACR &= ~FLASH_ACR_LATENCY_1WS;
+    } while (!(FLASH->ACR & FLASH_ACR_LATENCY_4WS));
 
     /* Configure voltage regulator */
     if (!(RCCx->Init.LOW_POWER_MODE))
@@ -40,20 +38,36 @@ LL_StatusTypeDef LL_RCC_Init(LL_RCC_HandleTypeDef *RCCx)
         PWR->CR5    &=  ~MODE1;
     }
 
-    /* Enable HSI oscillator */
-    if (RCCx->Init.HSI) 
+    /* Configure System clock */
+    if (RCCx->Init.SYSCLK_SOURCE == PLLCLK) 
     {
-        RCC->CR |= HSION;
-        while (!(RCC->CR & RCC_CR_HSIRDY));
+        do {
+            RCC->CR |= HSION;
+        } while (!(RCC->CR & RCC_CR_HSIRDY));
         RCC->ICSCR  |=  HSITRIM_64;
-    }
-    
-    /* Configure PLL used for SYSCLK Domain */
-    RCC->PLLCFGR    |=  (RCCx->Init.PLLSRC |
-                        RCCx->Init.PLLM | RCCx->Init.PLLN | RCCx->Init.PLLR |
-                        RCCx->Init.PLLQ | RCCx->Init.PLLP |
-                        PLLREN);
+        if (RCC->CR & RCC_CR_PLLON) RCC->CR &= ~RCC_CR_PLLON;
+        do {
+            /* Configure PLL used for SYSCLK Domain */
+            RCC->PLLCFGR    =  (RCCx->Init.PLLSRC | \
+                                RCCx->Init.PLLM | RCCx->Init.PLLN | RCCx->Init.PLLR | \
+                                RCCx->Init.PLLQ | RCCx->Init.PLLP | 
+                                PLLREN);
 
+            /* Enable main PLL */                    
+            RCC->CR |=  RCC_CR_PLLON;
+        } while(!(RCC->CR & RCC_CR_PLLRDY));
+
+        RCC->CFGR   |=  HPRE_DIV2;
+
+        /* Initialize the CPU, AHB and APB buses clocks */
+        RCC->CFGR   =  (RCCx->Init.SYSCLK_SOURCE | \
+                        RCCx->Init.AHB_PRE | \
+                        RCCx->Init.APB1_PRE | \
+                        RCCx->Init.APB2_PRE);
+        
+        /* Update the SystemCoreClock global variable */
+        LL_InitTick(170000000);
+    }
 
     return tmp_status;
 }

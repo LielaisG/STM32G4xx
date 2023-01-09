@@ -39,7 +39,23 @@ Core/Src/stm32g4xx_it.c \
 Core/Src/system_stm32g4xx.c \
 Core/Src/stm32g4xx_hal_msp.c \
 Drivers/G4xx_LL_Driver/Src/g4xx_ll.c \
-Drivers/G4xx_LL_Driver/Src/g4xx_ll_rcc.c
+Drivers/G4xx_LL_Driver/Src/g4xx_ll_rcc.c \
+Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c
 
 # ASM sources
 ASM_SOURCES =  \

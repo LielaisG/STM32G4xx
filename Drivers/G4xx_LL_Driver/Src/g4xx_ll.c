@@ -43,7 +43,7 @@ LL_StatusTypeDef LL_Init(void)
 #endif /* PREFETCH_CACHE_ENABLE */
 
     /* Set Interrupt Group Priority */
-    HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+    NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
 
     /* Configure the SysTick to have interrupt in 1ms time basis*/
     if (LL_InitTick(SystemCoreClock) != LL_OK) status = LL_ERROR;
@@ -87,6 +87,9 @@ LL_StatusTypeDef LL_InitTick(uint32_t sysClock)
 
     /* Set interrupt priority */
     NVIC_SetPriority(SysTick_IRQn, 0);
+
+    /* This function sets directly SystemCoreClock CMSIS variable. */
+    SystemCoreClock = sysClock;
 
     return status;
 }
