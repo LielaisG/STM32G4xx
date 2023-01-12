@@ -39,5 +39,4 @@ void RCC_Init(void)
     rcc.Init.APB1_PRE = PPRE1_DIV1;
     rcc.Init.APB2_PRE = PPRE2_DIV1;
     if (LL_RCC_Init(&rcc) != LL_OK) Error_Handler();
-    
 }

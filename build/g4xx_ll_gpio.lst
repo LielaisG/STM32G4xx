@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//ccoAES7y.s 			page 1
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -17,12 +17,332 @@ ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//ccoAES7y.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              	.Letext0:
-ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//ccoAES7y.s 			page 2
+  17              		.section	.text.LL_GPIO_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	LL_GPIO_Init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	LL_GPIO_Init:
+  27              	.LFB135:
+  28              		.file 1 "Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c"
+   1:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** /**
+   2:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  ******************************************************************************
+   3:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * @file    g4xx_ll_rcc.c
+   4:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * @author  Gatis Fridenbergs
+   5:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * @brief   GPIO LL module driver.
+   6:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * 
+   7:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  ******************************************************************************
+   8:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * @attention
+   9:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  *
+  10:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * Copyright (c) 2023 LielaisG.
+  11:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * https://github.com/LielaisG
+  12:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * 
+  13:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * All rights reserved.
+  14:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  *
+  15:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  ******************************************************************************
+  16:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** */
+  17:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** 
+  18:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** #include "g4xx_ll_gpio.h"
+  19:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** 
+  20:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** /**
+  21:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****  * @brief Initialize the GPIOx peripheral according to the specified parameters.
+  22:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** */
+  23:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** LL_StatusTypeDef LL_GPIO_Init(LL_GPIO_HandleTypeDef *GPIOx)
+  24:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** {
+  29              		.loc 1 24 1
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 16
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34 0000 80B4     		push	{r7}
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 2
+
+
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 7, -4
+  38 0002 85B0     		sub	sp, sp, #20
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 24
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44 0006 7860     		str	r0, [r7, #4]
+  25:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     LL_StatusTypeDef tmp_status = LL_OK;
+  45              		.loc 1 25 22
+  46 0008 0023     		movs	r3, #0
+  47 000a FB73     		strb	r3, [r7, #15]
+  26:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** 
+  27:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     /* Enable clock for the GPIO and reset it */
+  28:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     if (GPIOx->Init.CLOCK == ENABLE)
+  48              		.loc 1 28 20
+  49 000c 7B68     		ldr	r3, [r7, #4]
+  50 000e 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+  51              		.loc 1 28 8
+  52 0010 012B     		cmp	r3, #1
+  53 0012 2FD1     		bne	.L2
+  29:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     {
+  30:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         if (GPIOx->Instance == GPIOA)
+  54              		.loc 1 30 18
+  55 0014 7B68     		ldr	r3, [r7, #4]
+  56 0016 1B68     		ldr	r3, [r3]
+  57              		.loc 1 30 12
+  58 0018 B3F1904F 		cmp	r3, #1207959552
+  59 001c 12D1     		bne	.L3
+  31:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         {
+  32:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             RCC->AHB2ENR    |=  GPIOA_CLK_EN;
+  60              		.loc 1 32 29
+  61 001e 3A4B     		ldr	r3, .L9
+  62 0020 DB6C     		ldr	r3, [r3, #76]
+  63 0022 394A     		ldr	r2, .L9
+  64 0024 43F00103 		orr	r3, r3, #1
+  65 0028 D364     		str	r3, [r2, #76]
+  33:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             if (GPIOx->Init.PORT == 5)
+  66              		.loc 1 33 28
+  67 002a 7B68     		ldr	r3, [r7, #4]
+  68 002c 9B68     		ldr	r3, [r3, #8]
+  69              		.loc 1 33 16
+  70 002e 052B     		cmp	r3, #5
+  71 0030 22D1     		bne	.L4
+  34:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             {
+  35:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****                 GPIOx->Instance->BRR    |=  BR5;
+  72              		.loc 1 35 22
+  73 0032 7B68     		ldr	r3, [r7, #4]
+  74 0034 1B68     		ldr	r3, [r3]
+  75              		.loc 1 35 41
+  76 0036 9A6A     		ldr	r2, [r3, #40]
+  77              		.loc 1 35 22
+  78 0038 7B68     		ldr	r3, [r7, #4]
+  79 003a 1B68     		ldr	r3, [r3]
+  80              		.loc 1 35 41
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 3
+
+
+  81 003c 42F40012 		orr	r2, r2, #2097152
+  82 0040 9A62     		str	r2, [r3, #40]
+  83 0042 19E0     		b	.L4
+  84              	.L3:
+  36:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             }
+  37:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         }
+  38:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         else if (GPIOx->Instance == GPIOC)
+  85              		.loc 1 38 23
+  86 0044 7B68     		ldr	r3, [r7, #4]
+  87 0046 1B68     		ldr	r3, [r3]
+  88              		.loc 1 38 17
+  89 0048 304A     		ldr	r2, .L9+4
+  90 004a 9342     		cmp	r3, r2
+  91 004c 14D1     		bne	.L4
+  39:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         {
+  40:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             RCC->AHB2ENR    |=  GPIOC_CLK_EN;
+  92              		.loc 1 40 29
+  93 004e 2E4B     		ldr	r3, .L9
+  94 0050 DB6C     		ldr	r3, [r3, #76]
+  95 0052 2D4A     		ldr	r2, .L9
+  96 0054 43F00403 		orr	r3, r3, #4
+  97 0058 D364     		str	r3, [r2, #76]
+  41:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             if (GPIOx->Init.PORT == 13)
+  98              		.loc 1 41 28
+  99 005a 7B68     		ldr	r3, [r7, #4]
+ 100 005c 9B68     		ldr	r3, [r3, #8]
+ 101              		.loc 1 41 16
+ 102 005e 0D2B     		cmp	r3, #13
+ 103 0060 0AD1     		bne	.L4
+  42:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             {
+  43:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****                 GPIOx->Instance->BRR    |=  BR13;
+ 104              		.loc 1 43 22
+ 105 0062 7B68     		ldr	r3, [r7, #4]
+ 106 0064 1B68     		ldr	r3, [r3]
+ 107              		.loc 1 43 41
+ 108 0066 9A6A     		ldr	r2, [r3, #40]
+ 109              		.loc 1 43 22
+ 110 0068 7B68     		ldr	r3, [r7, #4]
+ 111 006a 1B68     		ldr	r3, [r3]
+ 112              		.loc 1 43 41
+ 113 006c 42F00052 		orr	r2, r2, #536870912
+ 114 0070 9A62     		str	r2, [r3, #40]
+ 115 0072 01E0     		b	.L4
+ 116              	.L2:
+  44:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             }
+  45:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         }  
+  46:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     }
+  47:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     else
+  48:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     {
+  49:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         tmp_status = LL_ERROR;
+ 117              		.loc 1 49 20
+ 118 0074 0123     		movs	r3, #1
+ 119 0076 FB73     		strb	r3, [r7, #15]
+ 120              	.L4:
+  50:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     }
+  51:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** 
+  52:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     /* GPIO mode configuration */
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 4
+
+
+  53:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     if (GPIOx->Init.MODE == OUTPUT)
+ 121              		.loc 1 53 20
+ 122 0078 7B68     		ldr	r3, [r7, #4]
+ 123 007a DB68     		ldr	r3, [r3, #12]
+ 124              		.loc 1 53 8
+ 125 007c 012B     		cmp	r3, #1
+ 126 007e 1ED1     		bne	.L5
+  54:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     {
+  55:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         if (GPIOx->Init.PORT == 5)
+ 127              		.loc 1 55 24
+ 128 0080 7B68     		ldr	r3, [r7, #4]
+ 129 0082 9B68     		ldr	r3, [r3, #8]
+ 130              		.loc 1 55 12
+ 131 0084 052B     		cmp	r3, #5
+ 132 0086 37D1     		bne	.L6
+  56:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         {
+  57:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             GPIOx->Instance->MODER      |=  (OUTPUT << MODE5);
+ 133              		.loc 1 57 18
+ 134 0088 7B68     		ldr	r3, [r7, #4]
+ 135 008a 1B68     		ldr	r3, [r3]
+ 136              		.loc 1 57 41
+ 137 008c 1A68     		ldr	r2, [r3]
+ 138              		.loc 1 57 18
+ 139 008e 7B68     		ldr	r3, [r7, #4]
+ 140 0090 1B68     		ldr	r3, [r3]
+ 141              		.loc 1 57 41
+ 142 0092 42F48062 		orr	r2, r2, #1024
+ 143 0096 1A60     		str	r2, [r3]
+  58:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             GPIOx->Instance->OTYPER     |=  (PUSH_PULL << OT5);
+ 144              		.loc 1 58 18
+ 145 0098 7B68     		ldr	r3, [r7, #4]
+ 146 009a 1A68     		ldr	r2, [r3]
+ 147 009c 7B68     		ldr	r3, [r7, #4]
+ 148 009e 1B68     		ldr	r3, [r3]
+ 149              		.loc 1 58 41
+ 150 00a0 5268     		ldr	r2, [r2, #4]
+ 151 00a2 5A60     		str	r2, [r3, #4]
+  59:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             GPIOx->Instance->OSPEEDR    |=  (LOW_SPEED << OSPEEDR5);
+ 152              		.loc 1 59 18
+ 153 00a4 7B68     		ldr	r3, [r7, #4]
+ 154 00a6 1A68     		ldr	r2, [r3]
+ 155 00a8 7B68     		ldr	r3, [r7, #4]
+ 156 00aa 1B68     		ldr	r3, [r3]
+ 157              		.loc 1 59 41
+ 158 00ac 9268     		ldr	r2, [r2, #8]
+ 159 00ae 9A60     		str	r2, [r3, #8]
+  60:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             GPIOx->Instance->PUPDR      |=  (NO_PULL << PUPDR5);
+ 160              		.loc 1 60 18
+ 161 00b0 7B68     		ldr	r3, [r7, #4]
+ 162 00b2 1A68     		ldr	r2, [r3]
+ 163 00b4 7B68     		ldr	r3, [r7, #4]
+ 164 00b6 1B68     		ldr	r3, [r3]
+ 165              		.loc 1 60 41
+ 166 00b8 D268     		ldr	r2, [r2, #12]
+ 167 00ba DA60     		str	r2, [r3, #12]
+ 168 00bc 1CE0     		b	.L6
+ 169              	.L5:
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 5
+
+
+  61:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         }
+  62:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     }
+  63:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     else if (GPIOx->Init.MODE == INPUT)
+ 170              		.loc 1 63 25
+ 171 00be 7B68     		ldr	r3, [r7, #4]
+ 172 00c0 DB68     		ldr	r3, [r3, #12]
+ 173              		.loc 1 63 13
+ 174 00c2 002B     		cmp	r3, #0
+ 175 00c4 16D1     		bne	.L7
+  64:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     {
+  65:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         if (GPIOx->Init.PORT == 13)
+ 176              		.loc 1 65 24
+ 177 00c6 7B68     		ldr	r3, [r7, #4]
+ 178 00c8 9B68     		ldr	r3, [r3, #8]
+ 179              		.loc 1 65 12
+ 180 00ca 0D2B     		cmp	r3, #13
+ 181 00cc 14D1     		bne	.L6
+  66:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         {
+  67:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             GPIOx->Instance->MODER  |=  (INPUT << MODE13);
+ 182              		.loc 1 67 18
+ 183 00ce 7B68     		ldr	r3, [r7, #4]
+ 184 00d0 1A68     		ldr	r2, [r3]
+ 185 00d2 7B68     		ldr	r3, [r7, #4]
+ 186 00d4 1B68     		ldr	r3, [r3]
+ 187              		.loc 1 67 37
+ 188 00d6 1268     		ldr	r2, [r2]
+ 189 00d8 1A60     		str	r2, [r3]
+  68:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             GPIOx->Instance->OSPEEDR    |=  (LOW_SPEED << OSPEEDR13);
+ 190              		.loc 1 68 18
+ 191 00da 7B68     		ldr	r3, [r7, #4]
+ 192 00dc 1A68     		ldr	r2, [r3]
+ 193 00de 7B68     		ldr	r3, [r7, #4]
+ 194 00e0 1B68     		ldr	r3, [r3]
+ 195              		.loc 1 68 41
+ 196 00e2 9268     		ldr	r2, [r2, #8]
+ 197 00e4 9A60     		str	r2, [r3, #8]
+  69:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****             GPIOx->Instance->PUPDR      |=  (NO_PULL << PUPDR13);
+ 198              		.loc 1 69 18
+ 199 00e6 7B68     		ldr	r3, [r7, #4]
+ 200 00e8 1A68     		ldr	r2, [r3]
+ 201 00ea 7B68     		ldr	r3, [r7, #4]
+ 202 00ec 1B68     		ldr	r3, [r3]
+ 203              		.loc 1 69 41
+ 204 00ee D268     		ldr	r2, [r2, #12]
+ 205 00f0 DA60     		str	r2, [r3, #12]
+ 206 00f2 01E0     		b	.L6
+ 207              	.L7:
+  70:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         }
+  71:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     }
+  72:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     else
+  73:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     {
+  74:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****         tmp_status = LL_ERROR;
+ 208              		.loc 1 74 20
+ 209 00f4 0123     		movs	r3, #1
+ 210 00f6 FB73     		strb	r3, [r7, #15]
+ 211              	.L6:
+  75:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     }
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 6
+
+
+  76:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** 
+  77:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c ****     return tmp_status;
+ 212              		.loc 1 77 12
+ 213 00f8 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  78:Drivers/G4xx_LL_Driver/Src/g4xx_ll_gpio.c **** }...
+ 214              		.loc 1 78 1
+ 215 00fa 1846     		mov	r0, r3
+ 216 00fc 1437     		adds	r7, r7, #20
+ 217              	.LCFI3:
+ 218              		.cfi_def_cfa_offset 4
+ 219 00fe BD46     		mov	sp, r7
+ 220              	.LCFI4:
+ 221              		.cfi_def_cfa_register 13
+ 222              		@ sp needed
+ 223 0100 5DF8047B 		ldr	r7, [sp], #4
+ 224              	.LCFI5:
+ 225              		.cfi_restore 7
+ 226              		.cfi_def_cfa_offset 0
+ 227 0104 7047     		bx	lr
+ 228              	.L10:
+ 229 0106 00BF     		.align	2
+ 230              	.L9:
+ 231 0108 00100240 		.word	1073876992
+ 232 010c 00080048 		.word	1207961600
+ 233              		.cfi_endproc
+ 234              	.LFE135:
+ 236              		.text
+ 237              	.Letext0:
+ 238              		.file 2 "Core/Inc/main.h"
+ 239              		.file 3 "/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/machine/_defau
+ 240              		.file 4 "/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/sys/_stdint.h"
+ 241              		.file 5 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h"
+ 242              		.file 6 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h"
+ 243              		.file 7 "Drivers/G4xx_LL_Driver/Inc/g4xx_ll_gpio.h"
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 g4xx_ll_gpio.c
+/var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s:18     .text.LL_GPIO_Init:0000000000000000 $t
+/var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s:26     .text.LL_GPIO_Init:0000000000000000 LL_GPIO_Init
+/var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s:231    .text.LL_GPIO_Init:0000000000000108 $d
                            .group:0000000000000000 wm4.0.523ae1b9feed7684bfc464b822df8431
                            .group:0000000000000000 wm4.stm32g4xx_hal_conf.h.23.02df5696a01decde7303d3c5b49566b1
                            .group:0000000000000000 wm4.stm32g4xx.h.38.15f7fc3a143c96355d2ed83b1c947348
@@ -75,12 +395,12 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
                            .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
                            .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//cc8PFVhq.s 			page 8
+
+
                            .group:0000000000000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
                            .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
                            .group:0000000000000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
-ARM GAS  /var/folders/kw/xnk0gy0n665fyhthzgwb7c200000gp/T//ccoAES7y.s 			page 3
-
-
                            .group:0000000000000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
                            .group:0000000000000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
                            .group:0000000000000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
@@ -89,5 +409,6 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
                            .group:0000000000000000 wm4.g4xx_ll_rcc.h.85.084c5c693d6950b8a7ad44823da965aa
                            .group:0000000000000000 wm4.main.h.44.91974ce6c1da87ca8513232cfd92065a
+                           .group:0000000000000000 wm4.g4xx_ll_gpio.h.71.6d326fc0c43d25d7ec0d62c293f12812
 
 NO UNDEFINED SYMBOLS

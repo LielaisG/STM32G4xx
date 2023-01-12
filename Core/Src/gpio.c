@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file    rcc.c
+ * @file    gpio.c
  * @author  Gatis Fridenbergs
  * @brief   This file provides code for the configuration
  *          of all used GPIO pins.
@@ -18,43 +18,34 @@
 
 #include "gpio.h"
 
+LL_GPIO_HandleTypeDef gpioa;
+LL_GPIO_HandleTypeDef gpioc;
+
 /**
  * @brief
  * 
  * @note Configure pins as
- *          - Analog
  *          - Input
  *          - Output
- *          - EVENT_OUT
- *          - EXTI
 */
 void GPIO_Init(void)
 {
+    /* GPIO Ports Clock Enable */
+    gpioa.Init.CLOCK = ENABLE;
+    gpioc.Init.CLOCK = ENABLE;
 
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
+    /*Configure GPIO pin : LD3 */
+    gpioa.Instance = GPIOA;
+    gpioa.Init.PORT = 5;
+    gpioa.Init.MODE = OUTPUT;
+    gpioa.Init.OTYPE = PUSH_PULL;
+    gpioa.Init.SPEED = LOW_SPEED;
+    if (LL_GPIO_Init(&gpioa) != LL_OK) Error_Handler();
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = BTN_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BTN_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = LD2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
-
+    /*Configure GPIO pin : PtPin */
+    gpioc.Instance = GPIOC;
+    gpioc.Init.PORT = 13;
+    gpioc.Init.MODE = INPUT;
+    if (LL_GPIO_Init(&gpioc) != LL_OK) Error_Handler();
 }
 
-/* USER CODE BEGIN 2 */
-
-/* USER CODE END 2 */

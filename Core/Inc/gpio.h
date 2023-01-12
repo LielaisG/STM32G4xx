@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file    rcc.h
+ * @file    gpio.h
  * @author  Gatis Fridenbergs
  * @brief   This file contains all the function prototypes for
  *          the gpio.c file.

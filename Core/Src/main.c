@@ -31,6 +31,7 @@ int main(void)
     /* Configure the system clock */
 	RCC_Init();
 
+    /* Initialize all configured peripherals */
     GPIO_Init();
     
 	/* Infinite loop */
