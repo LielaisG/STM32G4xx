@@ -45,6 +45,10 @@ LL_StatusTypeDef LL_RCC_Init(LL_RCC_HandleTypeDef *RCCx)
             RCC->CR |= HSION;
         } while (!(RCC->CR & RCC_CR_HSIRDY));
         RCC->ICSCR  |=  HSITRIM_64;
+
+        /* Adapt Systick interrupt period */
+        
+
         if (RCC->CR & RCC_CR_PLLON) RCC->CR &= ~RCC_CR_PLLON;
         do {
             /* Configure PLL used for SYSCLK Domain */

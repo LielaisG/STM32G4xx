@@ -86,7 +86,7 @@ typedef struct __LL_RCC_HandleTypeDef
 #define VOS1                        (0x1UL << PWR_CR1_VOS_Pos)              /*!< Voltage scaling selection to range 1 */
 #define MODE1                       (PWR_CR5_R1MODE)                        /*!< Selection for Main Regulator in Range1 */
 #define HSION                       (RCC_CR_HSION)                          /*!< Internal High Speed oscillator (HSI16) clock enable */
-#define HSITRIM_64                  (0x64UL << RCC_ICSCR_HSITRIM_Pos)       /*!< Value for HSI16 clock trimming */
+#define HSITRIM_64                  (0x40UL << RCC_ICSCR_HSITRIM_Pos)       /*!< Value for HSI16 clock trimming */
 #define HSI16                       (RCC_PLLCFGR_PLLSRC_1)                  /*!< HSI16 clock selected as PLL clock entry */
 #define PLLCLK                      (RCC_CFGR_SW_PLL)                       /*!< PLL selection as system clock */
 #define PLLM_DIV4                   (0x3UL << RCC_PLLCFGR_PLLM_Pos)         /*!< Division factor for the main PLL input clock */

@@ -53,6 +53,8 @@ LL_StatusTypeDef LL_Init(void)
     RCC->APB1ENR1    |=  PWREN;
     PWR->CR3         |=  UCPD1_DBDIS;
 
+    
+
     return status;
 }
 
@@ -79,7 +81,7 @@ LL_StatusTypeDef LL_InitTick(uint32_t sysClock)
 
     /* Configure the SysTick to have interrupt in 1ms time base */
   	SysTick->LOAD  = (uint32_t)((sysClock / 1000U) - 1UL);         	    /*Set reload register*/
-  	NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); 	/* set Priority for Systick Interrupt */
+  	//NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); 	/* set Priority for Systick Interrupt */
 	SysTick->VAL   = 0UL;                                           	/*Load the SysTick Counter Value*/
   	SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk |
                     SysTick_CTRL_TICKINT_Msk   |

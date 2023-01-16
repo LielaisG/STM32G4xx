@@ -38,7 +38,7 @@ int main(void)
 	while (1)
 	{
 		GPIOA->ODR  ^=  GPIO_ODR_OD5;
-        uint32_t wait = 100;
+        uint32_t wait = 500;
   	    while (wait != 0) {wait--;}    
 	}
 }
